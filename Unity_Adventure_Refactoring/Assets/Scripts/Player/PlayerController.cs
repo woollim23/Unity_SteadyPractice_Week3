@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool attatchWall = false;
     private float wallRayDistance = 0.5f;  // Raycast 거리
     private float climbSpeed = 3f;
+    [SerializeField] private float boostValue = 1f; // 부스트 증가 속력
 
     private float bottomOffset;
 
@@ -118,7 +120,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             // 일반 이동
-            dir *= moveSpeed;
+            dir *= (moveSpeed * boostValue);
             dir.y = _rigidbody.velocity.y; // 현재 y 속도 유지
 
             _rigidbody.velocity = dir;
@@ -172,6 +174,22 @@ public class PlayerController : MonoBehaviour
                 CharacterManager.Instance.Player.condition.UseStamina(jumpPower / 10);
             }
         }
+    }
+
+    public void OnBoost(InputAction.CallbackContext context)
+    {
+        if ((context.phase == InputActionPhase.Performed))
+        {
+            StartCoroutine(BoostStamina());
+            CharacterManager.Instance.Player.condition.UseStamina(boostValue * 10);
+        }
+    }
+
+    IEnumerator BoostStamina()
+    {
+        boostValue = 1.5f; // 부스트 증가율
+        yield return new WaitForSeconds(3); // 3초만
+        boostValue = 1;
     }
 
     public void OnSetting(InputAction.CallbackContext context)

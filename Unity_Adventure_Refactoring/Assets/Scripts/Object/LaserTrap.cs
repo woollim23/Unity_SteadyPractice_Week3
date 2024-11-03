@@ -1,12 +1,18 @@
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserTrap : MonoBehaviour
 {
-    public Transform startPoint; // ·¹ÀÌÀú ½ÃÀÛÁ¡
-    public Transform endPoint; // ·¹ÀÌÀú ³¡Á¡
-    public LayerMask playerLayer; // ÇÃ·¹ÀÌ¾î ·¹ÀÌ¾î
-    [SerializeField] private int laserDamage = 1000;
+    public Transform startPoint; // ë ˆì´ì € ì‹œì‘ì 
+    public Transform endPoint; // ë ˆì´ì € ëì 
+    public LayerMask playerLayer; // í”Œë ˆì´ì–´ ë ˆì´ì–´
+    [SerializeField] private int laserDamage = 5;
+    [SerializeField] private int damageRate = 1;
+    [SerializeField] private int curTimer = 0;
     private LineRenderer lineRenderer;
+
+    List<IDamagable> things = new List<IDamagable>();
+
 
     void Start()
     {
@@ -22,26 +28,25 @@ public class LaserTrap : MonoBehaviour
 
     void Update()
     {
-        // ·¹ÀÌÀú¸¦ ±×¸®´Â ºÎºĞ
+        // ë ˆì´ì €ë¥¼ ê·¸ë¦¬ëŠ” ë¶€ë¶„
         lineRenderer.SetPosition(0, startPoint.position);
         lineRenderer.SetPosition(1, endPoint.position);
 
-        // ·¹ÀÌÀú °¨Áö
+        // ë ˆì´ì € ê°ì§€
         RaycastHit hit;
         if (Physics.Linecast(startPoint.position, endPoint.position, out hit, playerLayer))
         {
             if (hit.collider.CompareTag("Player"))
             {
-                // ÇÃ·¹ÀÌ¾î°¡ ·¹ÀÌÀú¸¦ Åë°úÇßÀ» ¶§ÀÇ Çàµ¿
-                ActivateTrap();
+                // í”Œë ˆì´ì–´ê°€ ë ˆì´ì €ë¥¼ í†µê³¼í–ˆì„ ë•Œì˜ í–‰ë™
+                InvokeRepeating("ActivateTrap", 0, damageRate);
             }
         }
     }
 
+
     void ActivateTrap()
     {
-        // °æ°í ¸Ş½ÃÁö Ãâ·Â
-        Debug.Log("Áï»ç ·¹ÀÌÀú¿¡ °¨ÁöµÇ¾ú½À´Ï´Ù!");
         CharacterManager.Instance.Player.condition.TakePhysicalDamage(laserDamage);
     }
 }

@@ -3185,6 +3185,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ec2e5f2e-402c-46f4-9178-ffb9b8c27b65
     m_ActionName: Player/Camera[/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 789062109}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnBoost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 73ff632d-d152-4f4e-bcfd-75e244163707
+    m_ActionName: Player/Boost[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3210,6 +3226,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
+  boostValue: 1
   cameraContainer: {fileID: 1086605171}
   minXLook: -65
   maxXLook: 65
@@ -8649,6 +8666,10 @@ PrefabInstance:
     - target: {fileID: 1787160157269787012, guid: 53c24dd6c6e43b54bbb7756c52e48fc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2541026371203349064, guid: 53c24dd6c6e43b54bbb7756c52e48fc1, type: 3}
+      propertyPath: laserDamage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4523423447758670713, guid: 53c24dd6c6e43b54bbb7756c52e48fc1, type: 3}
       propertyPath: m_Name
