@@ -5,7 +5,7 @@
 ### ○ 3D 게임
 <br>
 
-### ○ [분석문제 링크](https://velog.io/@woollim23/%EA%BE%B8%EC%A4%80%EC%8B%A4%EC%8A%B5-3%EC%A3%BC%EC%B0%A8-%EB%B6%84%EC%84%9D-%EB%AC%B8%EC%A0%9C)
+### ○ [분석문제 답변 링크](https://velog.io/@woollim23/%EA%BE%B8%EC%A4%80%EC%8B%A4%EC%8A%B5-3%EC%A3%BC%EC%B0%A8-%EB%B6%84%EC%84%9D-%EB%AC%B8%EC%A0%9C)
 <br>
 
 ### ○ Q1. 숙련 1강 ~ 숙련 3강
